@@ -10,7 +10,7 @@ push!(LOAD_PATH,"/home/leandro/Drive/Alunos/Guilherme/wdegree/XCorrelation")
 
 using XCorrelation ; const XC = XCorrelation
 
-# Read list of PDB files
+# Read list of PDB files and obtain a list with full path names
 pdbdir = "/home/guilherme/DCA_Modeling/SALB3.NOCST.001/pdb"
 println(" PDB Directory: ", pdbdir)
 pdblist = readdir(pdbdir)
