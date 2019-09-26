@@ -1,9 +1,9 @@
 #
 # Requires:
 #
-# using Statistics
-# using JPleXL # from https://github.com/mcubeg/JPleXL
-# using ProgressMeter
+# Statistics
+# JPleXL # from https://github.com/mcubeg/JPleXL
+# ProgressMeter
 
 using XCorrelation ; const XC = XCorrelation
 
