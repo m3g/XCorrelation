@@ -5,9 +5,6 @@
 # using JPleXL # from https://github.com/mcubeg/JPleXL
 # using ProgressMeter
 
-push!(LOAD_PATH,"/home/leandro/programs/JPleXL") # from https://github.com/mcubeg/JPleXL
-push!(LOAD_PATH,"/home/leandro/Drive/Alunos/Guilherme/wdegree/XCorrelation") 
-
 using XCorrelation ; const XC = XCorrelation
 
 # Read list of PDB files and obtain a list with full path names
