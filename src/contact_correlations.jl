@@ -1,9 +1,4 @@
 
-#Requires:
-#using Statistics
-#using JPleXL # from https://github.com/mcubeg/JPleXL
-#using ProgressMeter
-
 d(x,y) = sqrt( (x[1]-y[1])^2 + (x[2]-y[2])^2 + (x[3]-y[3])^2 )
 
 function contact_correlations(pdblist :: Vector{String}; 
