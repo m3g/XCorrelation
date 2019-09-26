@@ -32,7 +32,7 @@ C = XC.contact_correlations(pdblist,lastpdb=5,tol=1.0,reference=reference,minsep
 
 # C.Contacts contains the indexes of the residues involved in each contact pair
 
-# C.ContactDref contins the reference distances for each pair
+# C.ContactDref contains the reference distances for each pair
 
 # C.ContactBin is a Ncontact x Npdb matrix containing 0 or 1 for the satisfaction of the
 #              contact at each PDB file (with tolerance +/- tol)
