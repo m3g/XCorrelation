@@ -2,7 +2,7 @@
 
 Install with
 
-`Pkg.add(PackageSpec(url="https://github.com/mcubeg/XCorrelation"))`
+`] add https://github.com/mcubeg/XCorrelation`
 
 Use with
 
