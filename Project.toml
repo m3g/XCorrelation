@@ -1,0 +1,7 @@
+name = "XCorrelation"
+uuid = "ee3d1b29-1c82-43e2-836e-f166ea9368e2"
+authors = ["Leandro Martinez <leandro@iqm.unicamp.br>"]
+version = "0.1.0"
+
+[deps]
+ProgressMeter = "92933f4c-e287-5a05-a399-4b506db050ca"
