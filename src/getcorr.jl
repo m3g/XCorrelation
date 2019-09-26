@@ -63,7 +63,7 @@ function getcorr(Correlation :: CorrelationData, i :: Int64, j :: Int64, k :: In
   end
   index = Vector{Int64}(undef,nval)
   dist_corr = Vector{Float64}(undef,nval)
-  bin_corr = similar(correlation)
+  bin_corr = similar(dist_corr)
   ival = 0
   for l in 1:Correlation.nCA
     dval, binval  = getcorr(Correlation,i,j,k,l)
