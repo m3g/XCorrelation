@@ -1,6 +1,6 @@
 # Function to compute the binary correlations from the already computed distance data 
 
-function cbin(C :: CorrelationData, tol=2.0)
+function cbin(C :: CorrelationData; tol=2.0)
   
   npdbs = size(ContactBin)[1]
   Cbin = Matrix{Int64}(undef,npdbs,C.ncontacts)
