@@ -2,7 +2,7 @@
 d(x,y) = sqrt( (x[1]-y[1])^2 + (x[2]-y[2])^2 + (x[3]-y[3])^2 )
 
 function contact_data(pdblist :: Vector{String}; 
-                      lastpdb=nothing, minsep=1, reference=nothing, tol=2.0)
+                      lastpdb=nothing, minsep=1, reference=nothing, tol=2.0, correlations=false)
 
   if lastpdb == nothing
     npdbs = length(pdblist)
@@ -83,9 +83,15 @@ function contact_data(pdblist :: Vector{String};
   end
 
   npairs = Int64(ncontacts*(ncontacts-1)/2)
-  index = Vector{Int64}(undef,ncontacts)
-  dist = Vector{Float64}(undef,ncontacts)
-  bin = Vector{Float64}(undef,ncontacts)
+  if correlations
+    index = Vector{Int64}(undef,npairs)
+    dist = Vector{Float64}(undef,npairs)
+    bin = Vector{Float64}(undef,npairs)
+  else
+    index = Vector{Int64}(undef,1)
+    dist = Vector{Float64}(undef,1)
+    bin = Vector{Float64}(undef,1)
+  end
 
   C = CorrelationData(nCA,
                       npairs,
