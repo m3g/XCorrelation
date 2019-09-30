@@ -7,6 +7,7 @@ module XCorrelation
 
   include("./CorrelationData.jl")
   include("./index4D.jl")
+  include("./contact_data.jl")
   include("./contact_correlations.jl")
   include("./getcorr.jl")
   include("./getconstraints_Luciano.jl")
