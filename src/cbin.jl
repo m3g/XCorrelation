@@ -2,7 +2,7 @@
 
 function cbin(C :: CorrelationData; tol=2.0)
   
-  npdbs = size(ContactBin)[1]
+  npdbs = size(C.ContactBin)[1]
   Cbin = Matrix{Int64}(undef,npdbs,C.ncontacts)
   for ipdb in 1:npdbs
     for ic in 1:C.ncontacts
