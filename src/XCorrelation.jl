@@ -12,6 +12,7 @@ module XCorrelation
   include("./getcorr.jl")
   include("./getconstraints_Luciano.jl")
   include("./meancorr.jl")
+  include("./cbin.jl")
 
   include("./censoni_information.jl")
 

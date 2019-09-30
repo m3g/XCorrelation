@@ -110,4 +110,3 @@ function contact_data(pdblist :: Vector{String};
 end                            
 
 
-
