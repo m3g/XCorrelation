@@ -43,7 +43,7 @@ function contact_data(pdblist :: Vector{String};
   end
  
   # Reference distances
-  dref = Vector{Float64}(undef,ncontacts)
+  Dref = Vector{Float64}(undef,ncontacts)
 
   # Setting array of contact indexes
   Contacts = Matrix{Int64}(undef,ncontacts,2)
@@ -53,7 +53,7 @@ function contact_data(pdblist :: Vector{String};
       icontact = icontact + 1
       Contacts[icontact,1] = i
       Contacts[icontact,2] = j
-      dref[icontact] = d(cas_ref[i,1:3],cas_ref[j,1:3])
+      Dref[icontact] = d(cas_ref[i,1:3],cas_ref[j,1:3])
     end
   end
   println(" Number of contacts (i-j>",minsep,"): ", ncontacts)
@@ -69,7 +69,7 @@ function contact_data(pdblist :: Vector{String};
       i = Contacts[icontact,1]
       j = Contacts[icontact,2]
       ContactDistances[ipdb,icontact] = d(cas[i,1:3],cas[j,1:3])
-      if abs(ContactDistances[ipdb,icontact] - dref[icontact]) < tol
+      if abs(ContactDistances[ipdb,icontact] - Dref[icontact]) < tol
         ContactBin[ipdb,icontact] = true
       else
         ContactBin[ipdb,icontact] = false
@@ -103,7 +103,7 @@ function contact_data(pdblist :: Vector{String};
                       ContactDistances,
                       ContactBin,
                       Contacts,
-                      dref)
+                      Dref)
 
   return C
 
