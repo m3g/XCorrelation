@@ -3,7 +3,7 @@ struct CorrelationData
 
   nCA :: Int64
   npairs :: Int64
-  nconstraints :: Int64
+  ncontacts :: Int64
   index :: Vector{Int64}
   dist :: Vector{Float64}
   bin :: Vector{Float64}
