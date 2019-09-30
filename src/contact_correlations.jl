@@ -2,10 +2,8 @@
 function contact_correlations(pdblist :: Vector{String}; 
                               lastpdb=nothing, minsep=1, reference=nothing, tol=2.0)
 
-  C = contact_data(pdblist, lastpdb=lastpdb, minsep=minsep, reference=reference, tol=tol)
-
+  C = contact_data(pdblist, lastpdb=lastpdb, minsep=minsep, reference=reference, tol=tol, correlations=true)
   contatct_correlation!(C)
-  
   return C
 
 end
