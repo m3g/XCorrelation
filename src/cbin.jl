@@ -2,9 +2,8 @@
 
 function cbin(C :: CorrelationData; tol=2.0)
   
-  npdbs = size(C.ContactBin)[1]
-  Cbin = Matrix{Int64}(undef,npdbs,C.ncontacts)
-  for ipdb in 1:npdbs
+  Cbin = Matrix{Int64}(undef,C.npdbs,C.ncontacts)
+  for ipdb in 1:C.npdbs
     for ic in 1:C.ncontacts
       if abs(C.ContactDistances[ipdb,ic] - C.ContactDref[ic]) <= tol
         Cbin[ipdb,ic] = 1

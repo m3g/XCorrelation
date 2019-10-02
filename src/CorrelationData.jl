@@ -1,6 +1,7 @@
 
 struct CorrelationData
 
+  npdbs :: Int64
   nCA :: Int64
   npairs :: Int64
   ncontacts :: Int64

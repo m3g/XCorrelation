@@ -93,7 +93,8 @@ function contact_data(pdblist :: Vector{String};
     bin = Vector{Float64}(undef,1)
   end
 
-  C = CorrelationData(nCA,
+  C = CorrelationData(npdbs,
+                      nCA,
                       npairs,
                       ncontacts,
                       index,
