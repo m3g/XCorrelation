@@ -13,15 +13,19 @@ function contact_data(pdblist :: Vector{String};
   println(" Reading PDBs and computing contacts ... ")
 
   # If no external reference structure was provided, use the first frame
-  if reference == nothing
+
+  if typeof(reference) == Float64
+    println(" Contacts will be computed if distance is lower than: ", reference)
+    reference = pdblist[1]
+  elseif reference == nothing
     println(" Binary correlations will be computed using reference: ", pdblist[1])
     reference = pdblist[1]
   end
-  println(" Binary tolerance = ", tol)
-  pdb_ref = readPDB(reference)
-  cas_ref = JPleXL.xCA(pdb_ref)
-  nCA = size(cas_ref)[1]
-  println(" Number of CAs: ", nCA)
+    println(" Binary tolerance = ", tol)
+    pdb_ref = readPDB(reference)
+    cas_ref = JPleXL.xCA(pdb_ref)
+    nCA = size(cas_ref)[1]
+    println(" Number of CAs: ", nCA)
 
   # Vector that contains the residue number for each CA in sequence: 
   resnum_from_seq = zeros(Int64,nCA)
@@ -69,10 +73,20 @@ function contact_data(pdblist :: Vector{String};
       i = Contacts[icontact,1]
       j = Contacts[icontact,2]
       ContactDistances[ipdb,icontact] = d(cas[i,1:3],cas[j,1:3])
-      if abs(ContactDistances[ipdb,icontact] - Dref[icontact]) < tol
-        ContactBin[ipdb,icontact] = true
-      else
-        ContactBin[ipdb,icontact] = false
+
+    # Computing binary matrices based on a given reference PDB...
+      if typeof(reference) == Float64
+        if abs(ContactDistances[ipdb,icontact] - reference) < tol
+          ContactBin[ipdb,icontact] = true
+        else
+          ContactBin[ipdb,icontact] = false
+        end
+      else 
+        if abs(ContactDistances[ipdb,icontact] - Dref[icontact]) < tol
+          ContactBin[ipdb,icontact] = true
+        else
+          ContactBin[ipdb,icontact] = false
+        end
       end
     end
   end
