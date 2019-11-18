@@ -16,6 +16,8 @@ module XCorrelation
 
   include("./censoni_information.jl")
 
+  include("./biserial_correlation.jl")
+
 end
 
 
