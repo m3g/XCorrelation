@@ -3,7 +3,7 @@ module XCorrelation
 
   using Statistics
   using ProgressMeter
-  using JPleXL # from https://github.com/mcubeg/JPleXL
+  using PDBTools # from https://github.com/m3g/PDBTools
 
   include("./CorrelationData.jl")
   include("./index4D.jl")

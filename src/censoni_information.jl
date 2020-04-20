@@ -36,8 +36,8 @@ end
 
 
 function censoni_information(pdbfile)
-  pdb = JPleXL.readPDB(pdbfile)
-  cas = JPleXL.xCA(pdb)
+  pdb = PDBTools.readPDB(pdbfile)
+  cas = PDBTools.xCA(pdb)
 
   # example use case, but should be changed
   # to receive confidence interval as input
