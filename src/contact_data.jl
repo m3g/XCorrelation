@@ -16,6 +16,7 @@ function contact_data(pdblist :: Vector{String};
 
   if typeof(reference) == Float64
     println(" Contacts will be computed if distance is lower than: ", reference)
+    ref_dist = reference
     reference = pdblist[1]
   elseif reference == nothing
     println(" Binary correlations will be computed using reference: ", pdblist[1])
@@ -75,8 +76,8 @@ function contact_data(pdblist :: Vector{String};
       ContactDistances[ipdb,icontact] = d(cas[i,1:3],cas[j,1:3])
 
     # Computing binary matrices based on a given reference PDB...
-      if typeof(reference) == Float64
-        if abs(ContactDistances[ipdb,icontact] - reference) < tol
+      if @isdefined(ref_dist)
+        if (ContactDistances[ipdb,icontact] < ref_dist + tol)
           ContactBin[ipdb,icontact] = true
         else
           ContactBin[ipdb,icontact] = false
