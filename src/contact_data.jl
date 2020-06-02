@@ -2,7 +2,8 @@
 d(x,y) = sqrt( (x[1]-y[1])^2 + (x[2]-y[2])^2 + (x[3]-y[3])^2 )
 
 function contact_data(pdblist :: Vector{String}; 
-                      lastpdb=nothing, minsep=1, reference=nothing, tol=2.0, correlations=false)
+                      lastpdb=nothing, minsep=1, reference=nothing, tol=2.0, correlations=false,
+                      select = PDBTools.xCA )
 
   if lastpdb == nothing
     npdbs = length(pdblist)
@@ -23,7 +24,7 @@ function contact_data(pdblist :: Vector{String};
   end
     println(" Binary tolerance = ", tol)
     pdb_ref = readPDB(reference)
-    cas_ref = PDBTools.xCA(pdb_ref)
+    cas_ref = select(pdb_ref)
     nCA = size(cas_ref)[1]
     println(" Number of CAs: ", nCA)
 
@@ -68,7 +69,7 @@ function contact_data(pdblist :: Vector{String};
   ContactBin = Matrix{Bool}(undef,npdbs,ncontacts)
   @showprogress for ipdb in 1:npdbs
     pdb = readPDB(pdblist[ipdb])
-    cas = PDBTools.xCA(pdb)
+    cas = select(pdb)
     for icontact in 1:ncontacts
       i = Contacts[icontact,1]
       j = Contacts[icontact,2]

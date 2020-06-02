@@ -35,9 +35,9 @@ function f_censoni(rmin, rmax, l, stp)
 end
 
 
-function censoni_information(pdbfile)
+function censoni_information(pdbfile; select = PDBTools.xCA )
   pdb = PDBTools.readPDB(pdbfile)
-  cas = PDBTools.xCA(pdb)
+  cas = select(pdb)
 
   # example use case, but should be changed
   # to receive confidence interval as input
