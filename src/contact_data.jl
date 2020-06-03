@@ -24,7 +24,7 @@ function contact_data(pdblist :: Vector{String};
     reference = pdblist[1]
   end
     println(" Binary tolerance = ", tol)
-    pdb_ref = readPDB(reference)
+    pdb_ref = PDBTools.readPDB(reference)
     cas_ref = select(pdb_ref)
     nCA = size(cas_ref)[1]
     println(" Number of CAs: ", nCA)
@@ -69,7 +69,7 @@ function contact_data(pdblist :: Vector{String};
   ContactDistances = Matrix{Float64}(undef,npdbs,ncontacts)
   ContactBin = Matrix{Bool}(undef,npdbs,ncontacts)
   @showprogress for ipdb in 1:npdbs
-    pdb = readPDB(pdblist[ipdb])
+    pdb = PDBTools.readPDB(pdblist[ipdb])
     cas = select(pdb)
     for icontact in 1:ncontacts
       i = Contacts[icontact,1]
