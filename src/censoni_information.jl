@@ -37,7 +37,7 @@ end
 
 function censoni_information(pdbfile; select = "name CA")
   pdb = PDBTools.readPDB(pdbfile)
-  cas = PDBTools.coor(pdb, select, column_based = false)
+  cas = PDBTools.coor(pdb, select; xyz_in_cols = true)
 
   # example use case, but should be changed
   # to receive confidence interval as input
